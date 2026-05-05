@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+Backend/node_modules/
+Frontend/node_modules/
+
+# Build outputs
+dist/
+build/
+coverage/
+Backend/dist/
+Frontend/dist/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env files
+.env
+.env.*
+!.env.example
+Backend/.env
+Frontend/.env
+
+# Runtime data
+*.pid
+*.pid.lock
+*.seed
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Vite cache
+Frontend/.vite/
+
