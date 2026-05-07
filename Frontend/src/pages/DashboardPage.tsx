@@ -18,25 +18,6 @@ export default function DashboardPage() {
   const { data: balances, isLoading } = useSummary();
   const { data: allocation } = useAllocation();
   const { data: transactions = [] } = useTransactions();
-
-  if (isLoading) {
-    return (
-      <div className="space-y-4">
-        <div className="grid gap-4 lg:grid-cols-3">
-          <Skeleton className="h-32" />
-          <Skeleton className="h-32" />
-          <Skeleton className="h-32" />
-        </div>
-        <Skeleton className="h-[28rem]" />
-      </div>
-    );
-  }
-
-  const totalValue = balances?.reduce((sum: number, item: any) => sum + (item.currentValue ?? 0), 0) ?? 0;
-  const totalCost = balances?.reduce((sum: number, item: any) => sum + ((item.averageBuyPrice ?? 0) * (item.netQuantity ?? 0)), 0) ?? 0;
-  const profitLoss = totalValue - totalCost;
-  const roi = totalCost > 0 ? (profitLoss / totalCost) * 100 : 0;
-
   const accountGrowth = React.useMemo(() => {
     const valid = (transactions || []).filter((tx: any) => tx?.date && tx?.accountName && tx?.quantity && tx?.priceAtDate);
     const byDate = new Map<string, Record<string, number>>();
@@ -69,6 +50,24 @@ export default function DashboardPage() {
 
     return { accounts, points };
   }, [transactions]);
+
+  if (isLoading) {
+    return (
+      <div className="space-y-4">
+        <div className="grid gap-4 lg:grid-cols-3">
+          <Skeleton className="h-32" />
+          <Skeleton className="h-32" />
+          <Skeleton className="h-32" />
+        </div>
+        <Skeleton className="h-[28rem]" />
+      </div>
+    );
+  }
+  const totalValue = balances?.reduce((sum: number, item: any) => sum + (item.currentValue ?? 0), 0) ?? 0;
+  const totalCost = balances?.reduce((sum: number, item: any) => sum + ((item.averageBuyPrice ?? 0) * (item.netQuantity ?? 0)), 0) ?? 0;
+  const profitLoss = totalValue - totalCost;
+  const roi = totalCost > 0 ? (profitLoss / totalCost) * 100 : 0;
+
 
   return (
     <div className="space-y-6 animate-fade-up">
