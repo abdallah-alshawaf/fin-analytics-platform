@@ -236,6 +236,12 @@ This helps populate charts and tables quickly for local testing.
 - Add global toast notifications and richer mutation feedback.
 - Add `.env.example` files for both services.
 - Add CI checks for backend tests + frontend build.
+  
+## 16) Photos of Deployment
+
+![Images of Deployment](https://i.imgur.com/AXAW7MK.png)
+![Images of Deployment](https://i.imgur.com/rxCQ7vD.png)
+![Images of Deployment](https://i.imgur.com/sMkKyNO.png)
 
 ---
 
